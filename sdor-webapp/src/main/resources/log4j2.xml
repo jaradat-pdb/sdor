@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN" monitorInterval="60">
+	<Properties>
+		<Property name="LogPattern">%d{yyyy-MM-dd HH:mm:ss.SSS} [%-5level] | %c{1} | %msg%n%ex</Property>
+	</Properties>
+
+	<Appenders>
+		<Console name="ConsoleAppender" target="SYSTEM_OUT" follow="true">
+			<PatternLayout pattern="${LogPattern}"/>
+		</Console>
+	</Appenders>
+
+	<Loggers>
+		<Logger name="org.pdbcorp.apps.sdor" level="trace" additivity="false">
+			<AppenderRef ref="ConsoleAppender"/>
+		</Logger>
+		<Root level="info">
+			<AppenderRef ref="ConsoleAppender"/>
+		</Root>
+	</Loggers>
+</Configuration>
