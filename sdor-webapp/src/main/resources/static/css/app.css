@@ -1,0 +1,19 @@
+body {
+	margin-top: 70px;
+}
+nav > a.navbar-brand, a.nav-link {
+	font-family: "Permanent Marker", cursive;
+	font-size: 1.5rem;
+}
+
+/* id property selectors */
+#indexbtn {
+	background-color: rgb(0, 165, 165);
+}
+#todocontainer > h2 {
+	color: rgb(0, 165, 165);
+	font-family: "Monofett", cursive;
+	font-size: 5rem;
+	padding-top: 30px;
+	padding-bottom: 20px;
+}
