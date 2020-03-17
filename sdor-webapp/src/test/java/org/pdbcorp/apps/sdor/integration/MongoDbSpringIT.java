@@ -29,17 +29,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.data.mongo.DataMongoTest;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.test.annotation.DirtiesContext;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
+@ActiveProfiles("test")
 @ContextConfiguration(classes = SdorWebApplication.class)
 @DataMongoTest
 @DirtiesContext
 @ExtendWith(SpringExtension.class)
-public class MongoDbSpringIT {
+class MongoDbSpringIT {
 	@DisplayName("given object to save when save object using MongoDB template then object is saved")
 	@Test
-	public void validTest(@Autowired MongoTemplate mongoTemplate) {
+	void validTest(@Autowired MongoTemplate mongoTemplate) {
 		//given
 		DBObject objectToSave = BasicDBObjectBuilder.start().add("key", "value").get();
 
