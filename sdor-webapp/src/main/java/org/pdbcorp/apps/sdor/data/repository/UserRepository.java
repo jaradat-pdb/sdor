@@ -19,6 +19,6 @@ package org.pdbcorp.apps.sdor.data.repository;
 import org.pdbcorp.apps.sdor.data.model.User;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
-public interface UserRepository extends MongoRepository<User, Long> {
+interface UserRepository extends MongoRepository<User, Long> {
 
 }
