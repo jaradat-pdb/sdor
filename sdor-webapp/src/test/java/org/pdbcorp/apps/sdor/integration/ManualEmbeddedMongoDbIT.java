@@ -43,7 +43,7 @@ class ManualEmbeddedMongoDbIT {
 	@BeforeEach
 	void setup() throws Exception {
 		String ip = "localhost";
-		int port = 27017;
+		int port = 38864;
 
 		IMongodConfig mongodConfig = new MongodConfigBuilder()
 			.version(Version.Main.PRODUCTION)
