@@ -1,4 +1,5 @@
-/* Copyright 2020 PDB Corp.
+/*
+ * Copyright 2020 PDB Corp.
  *
  * Proprietary Software built off of open-source software?
  *
@@ -19,6 +20,10 @@ package org.pdbcorp.apps.sdor.data.repository;
 import org.pdbcorp.apps.sdor.data.model.User;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
+/**
+ * @author jaradat-pdb
+ *
+ */
 interface UserRepository extends MongoRepository<User, Long> {
 
 }

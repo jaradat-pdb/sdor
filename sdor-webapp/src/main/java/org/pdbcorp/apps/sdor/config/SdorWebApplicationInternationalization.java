@@ -1,4 +1,5 @@
-/* Copyright 2020 PDB Corp.
+/*
+ * Copyright 2020 PDB Corp.
  *
  * Proprietary Software built off of open-source software?
  *
@@ -26,6 +27,10 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 
+/**
+ * @author jaradat-pdb
+ *
+ */
 @Configuration
 public class SdorWebApplicationInternationalization implements WebMvcConfigurer {
 	private static final String LOCALE_PARAM_NAME = "lang";

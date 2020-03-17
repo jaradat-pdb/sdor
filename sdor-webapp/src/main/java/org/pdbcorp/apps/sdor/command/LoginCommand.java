@@ -1,4 +1,5 @@
-/* Copyright 2020 PDB Corp.
+/*
+ * Copyright 2020 PDB Corp.
  *
  * Proprietary Software built off of open-source software?
  *
@@ -21,6 +22,10 @@ import javax.validation.constraints.Size;
 
 import lombok.Data;
 
+/**
+ * @author jaradat-pdb
+ *
+ */
 @Data
 public class LoginCommand {
 	@NotEmpty

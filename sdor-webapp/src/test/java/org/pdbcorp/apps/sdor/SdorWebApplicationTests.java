@@ -1,4 +1,5 @@
-/* Copyright 2020 PDB Corp.
+/*
+ * Copyright 2020 PDB Corp.
  *
  * Proprietary Software built off of open-source software?
  *
@@ -20,6 +21,10 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 
+/**
+ * @author jaradat-pdb
+ *
+ */
 @SpringBootTest
 @ActiveProfiles("test")
 class SdorWebApplicationTests {

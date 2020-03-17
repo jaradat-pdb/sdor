@@ -1,4 +1,5 @@
-/* Copyright 2020 PDB Corp.
+/*
+ * Copyright 2020 PDB Corp.
  *
  * Proprietary Software built off of open-source software?
  *
@@ -24,6 +25,10 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+ * @author jaradat-pdb
+ *
+ */
 @Document(collection = "categories")
 @NoArgsConstructor
 @AllArgsConstructor

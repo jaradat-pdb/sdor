@@ -1,4 +1,5 @@
-/* Copyright 2020 PDB Corp.
+/*
+ * Copyright 2020 PDB Corp.
  *
  * Proprietary Software built off of open-source software?
  *
@@ -19,6 +20,10 @@ package org.pdbcorp.apps.sdor;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+/**
+ * @author jaradat-pdb
+ *
+ */
 @SpringBootApplication
 public class SdorWebApplication {
 

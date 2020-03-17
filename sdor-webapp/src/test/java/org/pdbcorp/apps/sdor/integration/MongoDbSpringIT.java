@@ -1,4 +1,5 @@
-/* Copyright 2020 PDB Corp.
+/*
+ * Copyright 2020 PDB Corp.
  *
  * Proprietary Software built off of open-source software?
  *
@@ -33,6 +34,10 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
+/**
+ * @author jaradat-pdb
+ *
+ */
 @ActiveProfiles("test")
 @ContextConfiguration(classes = SdorWebApplication.class)
 @DataMongoTest

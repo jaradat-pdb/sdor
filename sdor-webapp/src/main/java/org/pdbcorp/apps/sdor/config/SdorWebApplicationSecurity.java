@@ -1,4 +1,5 @@
-/* Copyright 2020 PDB Corp.
+/*
+ * Copyright 2020 PDB Corp.
  *
  * Proprietary Software built off of open-source software?
  *
@@ -23,6 +24,10 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
+/**
+ * @author jaradat-pdb
+ *
+ */
 @Configuration
 public class SdorWebApplicationSecurity extends WebSecurityConfigurerAdapter {
 	private static final String ROLE_ADMIN = "ADMIN";

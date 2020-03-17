@@ -1,4 +1,5 @@
-/* Copyright 2020 PDB Corp.
+/*
+ * Copyright 2020 PDB Corp.
  *
  * Proprietary Software built off of open-source software?
  *
@@ -36,6 +37,10 @@ import de.flapdoodle.embed.mongo.config.Net;
 import de.flapdoodle.embed.mongo.distribution.Version;
 import de.flapdoodle.embed.process.runtime.Network;
 
+/**
+ * @author jaradat-pdb
+ *
+ */
 class ManualEmbeddedMongoDbIT {
 	private MongodExecutable mongodExecutable;
 	private MongoTemplate mongoTemplate;
