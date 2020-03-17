@@ -47,7 +47,7 @@ public class SdorWebApplicationSecurity extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
-			.antMatchers("/", "/secured", "/css/**", "/js/**", "/**/favicon.ico").permitAll()
+			.antMatchers("/", "/secured", "/css/**", "/images/**", "/js/**", "/**/favicon.ico").permitAll()
 			.antMatchers("/admin", "/actuator/health").hasRole(ROLE_ADMIN)
 			.antMatchers("/actuator/**", "/initiateShutdown").access("hasRole('" + ROLE_ROOT + "')")
 			.anyRequest().authenticated()
