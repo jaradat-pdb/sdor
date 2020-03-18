@@ -14,8 +14,7 @@
 
 		<section class="jumbotron logo-bg"></section>
 
-		<section class="container">
-			<h1 class="display-2 text-center">Welcome</h1>
+		<section class="container-fluid bg-warning py-2 mx-1">
 			<form th:object="${loginCommand}" th:action="@{/login}" method="POST" enctype="multipart/form-data">
 				<div class="form-group">
 					<label for="username" class="col-sm-3 control-label">User Name:</label>
@@ -32,7 +31,7 @@
 				</div>
 
 				<div class="form-group d-flex justify-content-center">
-					<button class="btn btn-warning btn-lg text-white" type="submit">Login</button>
+					<button class="btn logo-bg btn-lg text-white" type="submit">Login</button>
 				</div>
 			</form>
 		</section>
