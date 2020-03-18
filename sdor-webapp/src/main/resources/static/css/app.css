@@ -6,6 +6,18 @@ nav > a.navbar-brand, a.nav-link {
 	font-size: 1.5rem;
 }
 
+/* class property selectors */
+.jumbotron {
+	background: url('../images/sdor_logo.jpg') no-repeat center center;
+	height: 350px;
+	color: black;
+	text-shadow: #440 0 1px 1px;
+}
+.logo-bg {
+	/*background-color: rgba(0, 0, 0, 0.93); /* 93% black */
+	background-color: hsla(229, 5%, 7%, 1); /* Hue Saturation Lightness alpha */
+}
+
 /* id property selectors */
 #indexbtn {
 	background-color: rgb(0, 165, 165);
