@@ -12,6 +12,8 @@
 	<body>
 		<section id="header" th:replace="fragments/navbar :: navbar-header"></section>
 
+		<section class="jumbotron logo-bg"></section>
+
 		<section class="container">
 			<h1 class="display-2 text-center">Welcome</h1>
 			<form th:object="${loginCommand}" th:action="@{/login}" method="POST" enctype="multipart/form-data">
