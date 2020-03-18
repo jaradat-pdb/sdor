@@ -33,6 +33,8 @@ public class SdorWebApplicationSecurity extends WebSecurityConfigurerAdapter {
 	private static final String ROLE_ADMIN = "ADMIN";
 	private static final String ROLE_ROOT = "ROOT";
 	private static final String ROLE_USER = "USER";
+	private static final String URL_LOGOUT = "/logout";
+	private static final String URL_SECURED = "/secured";
 
 	@Autowired
 	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
@@ -47,19 +49,19 @@ public class SdorWebApplicationSecurity extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
-			.antMatchers("/", "/secured", "/css/**", "/images/**", "/js/**", "/**/favicon.ico").permitAll()
+			.antMatchers("/", URL_SECURED, "/css/**", "/images/**", "/js/**", "/**/favicon.ico").permitAll()
 			.antMatchers("/admin", "/actuator/health").hasRole(ROLE_ADMIN)
 			.antMatchers("/actuator/**", "/initiateShutdown").access("hasRole('" + ROLE_ROOT + "')")
 			.anyRequest().authenticated()
 			.and()
-			.formLogin().loginPage("/login").defaultSuccessUrl("/secured").permitAll()
+			.formLogin().loginPage("/login").defaultSuccessUrl(URL_SECURED).permitAll()
 			.and()
 			.logout()
 				.deleteCookies("remove")
 				.invalidateHttpSession(true)
-				.logoutUrl("/logout")
-				.logoutSuccessUrl("/secured")
-				.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+				.logoutUrl(URL_LOGOUT)
+				.logoutSuccessUrl(URL_SECURED)
+				.logoutRequestMatcher(new AntPathRequestMatcher(URL_LOGOUT))
 			.permitAll();
 		http.exceptionHandling().accessDeniedPage("/error");
 		http.csrf().disable();
