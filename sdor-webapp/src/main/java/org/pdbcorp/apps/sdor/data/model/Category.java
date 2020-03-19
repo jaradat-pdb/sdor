@@ -38,6 +38,11 @@ public class Category {
 	public static final String SEQUENCE_NAME = "categories_sequence";
 
 	@Id
-	private long id;
+	private String id;
+
 	private String name;
+
+	public Category(String name) {
+		this.name = name;
+	}
 }
