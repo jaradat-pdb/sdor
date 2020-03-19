@@ -22,10 +22,13 @@
 							<a th:href="@{/about}" class="nav-link">About</a>
 						</li>
 						<li class="nav-item">
-							<a th:href="@{/products}" class="nav-link">Products</a>
+							<a th:href="@{/products}" class="nav-link" sec:authorize="isAuthenticated()">Products</a>
 						</li>
 						<li class="nav-item">
-							<a th:href="@{/services}" class="nav-link">Services</a>
+							<a th:href="@{/services}" class="nav-link" sec:authorize="isAuthenticated()">Services</a>
+						</li>
+						<li class="nav-item">
+							<a th:href="@{/register}" class="nav-link" sec:authorize="!isAuthenticated()">Register</a>
 						</li>
 						<li class="nav-item">
 							<a th:href="@{/login}" class="nav-link" sec:authorize="!isAuthenticated()">Login</a>
