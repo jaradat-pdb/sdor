@@ -17,8 +17,13 @@
  */
 package org.pdbcorp.apps.sdor.data.model;
 
+import java.util.Set;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;
+import org.springframework.data.mongodb.core.index.IndexDirection;
+import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import lombok.AllArgsConstructor;
@@ -38,14 +43,32 @@ public class User {
 	public static final String SEQUENCE_NAME = "users_sequence";
 
 	@Id
-	private long id;
+	private String id;
+
 	private String firstName;
+
 	private String lastName;
+
+	@Indexed(unique = true, direction = IndexDirection.DESCENDING)
 	private String email;
 
-	public User(String firstName, String lastName, String email) {
+	private String password;
+
+	private boolean enabled;
+
+	@DBRef
+	private Set<Role> roles;
+
+	public User(String firstName, String lastName, String email, String password) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
+		this.password = password;
+	}
+
+	public User(String firstName, String lastName, String email, String password, boolean enabled, Set<Role> roles) {
+		this(firstName, lastName, email, password);
+		this.enabled = enabled;
+		this.roles = roles;
 	}
 }
