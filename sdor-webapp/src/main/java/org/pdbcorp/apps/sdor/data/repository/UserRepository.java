@@ -17,6 +17,8 @@
  */
 package org.pdbcorp.apps.sdor.data.repository;
 
+import java.util.List;
+
 import org.pdbcorp.apps.sdor.data.model.User;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
@@ -24,6 +26,8 @@ import org.springframework.data.mongodb.repository.MongoRepository;
  * @author jaradat-pdb
  *
  */
-interface UserRepository extends MongoRepository<User, Long> {
-
+public interface UserRepository extends MongoRepository<User, String> {
+	User findByEmail(String email);
+	List<User> findByFirstName(String firstName);
+	List<User> findByLastName(String lastName);
 }
