@@ -18,11 +18,11 @@
 package org.pdbcorp.apps.sdor.data.model;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Set;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import lombok.AllArgsConstructor;
@@ -42,12 +42,18 @@ public class Product {
 	public static final String SEQUENCE_NAME = "products_sequence";
 
 	@Id
-	private long id;
+	private String id;
+
 	private String name;
+
 	private String desc;
+
 	private BigDecimal price;
+
 	private String imageUrl;
-	private List<Category> categories = new ArrayList<>();
+
+	@DBRef
+	private Set<Category> categories;
 
 	public Product(String name, String desc, BigDecimal price, String imageUrl) {
 		this.name = name;
