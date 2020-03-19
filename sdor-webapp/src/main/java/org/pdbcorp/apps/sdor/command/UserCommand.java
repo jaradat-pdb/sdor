@@ -17,6 +17,7 @@
  */
 package org.pdbcorp.apps.sdor.command;
 
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
@@ -27,12 +28,20 @@ import lombok.Data;
  *
  */
 @Data
-public class LoginCommand {
+public class UserCommand {
 	@NotEmpty
-	@Size(min=2, max=30)
+	@Size(min = 1, max = 100, message = "First name must be between 1 to 100 characters long")
+	private String firstName;
+
+	@NotEmpty
+	@Size(min = 1, max = 100, message = "Last name must be between 1 to 100 characters long")
+	private String lastName;
+
+	@NotEmpty
+	@Email(message = "Email should be in a valid format")
 	private String email;
 
 	@NotEmpty
-	@Size(min=8, max=50)
+	@Size(min = 8, max = 50, message = "Password must be between 8 to 50 characters long")
 	private String password;
 }

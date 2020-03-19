@@ -17,11 +17,16 @@
  */
 package org.pdbcorp.apps.sdor.config;
 
+import org.pdbcorp.apps.sdor.service.SdorWebAppUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 /**
@@ -29,32 +34,44 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
  *
  */
 @Configuration
-public class SdorWebApplicationSecurity extends WebSecurityConfigurerAdapter {
-	private static final String ROLE_ADMIN = "ADMIN";
-	private static final String ROLE_ROOT = "ROOT";
-	private static final String ROLE_USER = "USER";
+@EnableWebSecurity
+public class SdorWebAppSecurity extends WebSecurityConfigurerAdapter {
+	private static final String AUTH_ADMIN = "ADMIN";
+	private static final String AUTH_ROOT = "ROOT";
 	private static final String URL_LOGOUT = "/logout";
 	private static final String URL_SECURED = "/secured";
+	private SdorWebAppAuthenticationSuccessHandler sdorWebAppAuthenticationSuccessHandler;
+	private SdorWebAppUserDetailsService sdorWebApplicationUserDetailsService;
+	private BCryptPasswordEncoder bCryptPasswordEncoder;
 
 	@Autowired
-	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-		auth.inMemoryAuthentication()
-			.withUser("user").password("{noop}password").roles(ROLE_USER)
-			.and()
-			.withUser("admin").password("{noop}secretPassword").roles(ROLE_USER, ROLE_ADMIN)
-			.and()
-			.withUser("root").password("{noop}superSecretPassword").roles(ROLE_USER, ROLE_ADMIN, ROLE_ROOT);
+	public SdorWebAppSecurity(SdorWebAppAuthenticationSuccessHandler sdorWebAppAuthenticationSuccessHandler,
+			SdorWebAppUserDetailsService sdorWebApplicationUserDetailsService, BCryptPasswordEncoder bCryptPasswordEncoder) {
+		this.sdorWebAppAuthenticationSuccessHandler = sdorWebAppAuthenticationSuccessHandler;
+		this.sdorWebApplicationUserDetailsService = sdorWebApplicationUserDetailsService;
+		this.bCryptPasswordEncoder = bCryptPasswordEncoder;
+	}
+
+	@Override
+	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+		auth.userDetailsService((UserDetailsService) sdorWebApplicationUserDetailsService).passwordEncoder(bCryptPasswordEncoder);
 	}
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
-			.antMatchers("/", "/index", URL_SECURED, "/css/**", "/img/**", "/js/**", "/**/favicon.ico").permitAll()
-			.antMatchers("/admin", "/actuator/health").hasRole(ROLE_ADMIN)
-			.antMatchers("/actuator/**", "/initiateShutdown").access("hasRole('" + ROLE_ROOT + "')")
+			.antMatchers("/", "/index", "/register", URL_SECURED, "/css/**", "/img/**", "/js/**", "/**/favicon.ico").permitAll()
+			.antMatchers("/admin", "/actuator/health").hasAuthority(AUTH_ADMIN)
+			.antMatchers("/actuator/**", "/initiateShutdown").access("hasAuthority('" + AUTH_ROOT + "')")
 			.anyRequest().authenticated()
 			.and()
-			.formLogin().loginPage("/login").defaultSuccessUrl(URL_SECURED).permitAll()
+			.formLogin()
+				.successHandler(sdorWebAppAuthenticationSuccessHandler)
+				.loginPage("/login")
+				.failureUrl("/login?error=true")
+				.usernameParameter("email")
+				.passwordParameter("password")
+			.permitAll()
 			.and()
 			.logout()
 				.deleteCookies("remove")
@@ -66,5 +83,10 @@ public class SdorWebApplicationSecurity extends WebSecurityConfigurerAdapter {
 		http.exceptionHandling().accessDeniedPage("/error");
 		http.csrf().disable();
 		http.headers().frameOptions().disable();
+	}
+
+	@Override
+	public void configure(WebSecurity webSecurity) throws Exception {
+		webSecurity.ignoring().antMatchers("/resources/**", "/static/**", "/css/**", "/img/**", "/js/**", "/**/favicon.ico");
 	}
 }

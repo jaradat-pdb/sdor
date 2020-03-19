@@ -15,24 +15,25 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.pdbcorp.apps.sdor.command;
+package org.pdbcorp.apps.sdor.service;
 
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Size;
-
-import lombok.Data;
+import org.pdbcorp.apps.sdor.command.UserCommand;
+import org.pdbcorp.apps.sdor.data.model.User;
+import org.springframework.stereotype.Service;
 
 /**
  * @author jaradat-pdb
  *
  */
-@Data
-public class LoginCommand {
-	@NotEmpty
-	@Size(min=2, max=30)
-	private String email;
+@Service
+public class UserCommandConversionService {
 
-	@NotEmpty
-	@Size(min=8, max=50)
-	private String password;
+	public User convert(UserCommand userCommand) {
+		User user = new User();
+		user.setEmail(userCommand.getEmail());
+		user.setFirstName(userCommand.getFirstName());
+		user.setLastName(userCommand.getLastName());
+		user.setPassword(userCommand.getPassword());
+		return user;
+	}
 }
