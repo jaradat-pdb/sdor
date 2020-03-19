@@ -14,6 +14,8 @@ HELP.md
 target/
 !**/src/main/**
 !**/src/test/**
+.attach_pid*
+custom.css
 
 # STS #
 .apt_generated
