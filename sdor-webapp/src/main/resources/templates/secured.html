@@ -35,19 +35,19 @@
 					<h2 class="display-4">User&apos;s Available Role(s)</h2>
 				</div>
 			</div>
-			<div class="row" sec:authorize="hasRole('ROLE_USER')">
+			<div class="row" sec:authorize="hasAuthority('USER')">
 				<div class="col-md-12 text-center">
-					<h4 class="text-secondary">ROLE_USER</h4>
+					<h4 class="text-secondary">USER</h4>
 				</div>
 			</div>
-			<div class="row" sec:authorize="hasRole('ROLE_ADMIN')">
+			<div class="row" sec:authorize="hasAuthority('ADMIN')">
 				<div class="col-md-12 text-center">
-					<h4 class="text-secondary">ROLE_ADMIN</h4>
+					<h4 class="text-secondary">ADMIN</h4>
 				</div>
 			</div>
-			<div class="row" sec:authorize="hasRole('ROLE_ROOT')">
+			<div class="row" sec:authorize="hasAuthority('ROOT')">
 				<div class="col-md-12 text-center">
-					<h4 class="text-secondary">ROLE_ROOT</h4>
+					<h4 class="text-secondary">ROOT</h4>
 				</div>
 			</div>
 		</section>
