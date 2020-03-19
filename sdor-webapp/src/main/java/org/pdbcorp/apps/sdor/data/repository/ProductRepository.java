@@ -24,6 +24,6 @@ import org.springframework.data.mongodb.repository.MongoRepository;
  * @author jaradat-pdb
  *
  */
-interface ProductRepository extends MongoRepository<Product, Long> {
+public interface ProductRepository extends MongoRepository<Product, String> {
 
 }
