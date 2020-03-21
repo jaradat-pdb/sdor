@@ -28,6 +28,8 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 
+import nz.net.ultraq.thymeleaf.LayoutDialect;
+
 /**
  * @author jaradat-pdb
  *
@@ -39,6 +41,11 @@ public class SdorWebAppInternationalization implements WebMvcConfigurer {
 	@Bean
 	public BCryptPasswordEncoder bCryptPasswordEncoder() {
 		return new BCryptPasswordEncoder();
+	}
+
+	@Bean
+	public LayoutDialect layoutDialect() {
+		return new LayoutDialect();
 	}
 
 	@Bean
