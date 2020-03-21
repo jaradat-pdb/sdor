@@ -15,7 +15,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.pdbcorp.apps.sdor.integration;
+package org.pdbcorp.apps.sdor.data.repository;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
