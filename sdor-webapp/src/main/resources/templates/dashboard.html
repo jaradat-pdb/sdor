@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{default}">
+	<head>
+		<title>Admin Dashboard</title>
+	</head>
+	<body>
+		<div layout:fragment="content">
+			<div class="col-12 col-md-6">
+				<div class="row d-flex justify-content-center">
+					<h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
+				</div>
+				<div class="row d-flex justify-content-center">
+					<h2>This is your Admin Dashboard</h2>
+				</div>
+				<div class="row d-flex justify-content-center">
+					<a href="/secured" class="btn btn-lg btn-warning">See roles</a>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
