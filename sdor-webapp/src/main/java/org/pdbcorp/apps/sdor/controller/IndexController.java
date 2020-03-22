@@ -41,4 +41,14 @@ public class IndexController {
 	public String getSecured() {
 		return "secured";
 	}
+
+	@GetMapping("/products")
+	public String getProducts() {
+		return "products";
+	}
+
+	@GetMapping("/services")
+	public String getServices() {
+		return "services";
+	}
 }
