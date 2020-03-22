@@ -61,7 +61,7 @@ public class SdorWebAppSecurity extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
 			.antMatchers("/", "/index", "/register", URL_SECURED, "/css/**", "/img/**", "/js/**", "/**/favicon.ico").permitAll()
-			.antMatchers("/admin", "/actuator/health").hasAuthority(AUTH_ADMIN)
+			.antMatchers("/admin", "/actuator/health", "/dashboard").hasAuthority(AUTH_ADMIN)
 			.antMatchers("/actuator/**", "/initiateShutdown").access("hasAuthority('" + AUTH_ROOT + "')")
 			.anyRequest().authenticated()
 			.and()
