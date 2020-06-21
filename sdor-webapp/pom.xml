@@ -6,8 +6,8 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/x
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.2.5.RELEASE</version>
-		<relativePath>../../../../../opt/mvn/_repo/org/springframework/boot/spring-boot-starter-parent/2.2.5.RELEASE</relativePath>
+		<version>2.2.7.RELEASE</version>
+		<relativePath>../../../../../opt/mvn/_repo/org/springframework/boot/spring-boot-starter-parent/2.2.7.RELEASE</relativePath>
 	</parent>
 	<groupId>org.pdbcorp.apps</groupId>
 	<artifactId>sdor-webapp</artifactId>
